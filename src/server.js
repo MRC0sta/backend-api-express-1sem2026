@@ -8,6 +8,10 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
+app.get('/user', (req, res) => {
+  res.send('Você está no user')
+})
+
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`Servidor rodando em http://localhost:${port}`)
 })
