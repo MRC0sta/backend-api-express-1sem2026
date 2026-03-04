@@ -7,3 +7,7 @@
 - Como mudar o formato de importação de "require" (padrão common.js) para module -> package.json e mudar para: "type": "module"
 - O que é HTTP?
 - Quais os métodos de requisição HTTP e para que serve cada um deles?
+- Para que serve o router do Express?
+- O que é um padrão de projeto?
+- O que é o padrão de projeto MVC?
+- Qual a responsabilidade de cada Camada?
