@@ -20,3 +20,10 @@ model user {
   email  String @unique
   pass   String @db.VarChar(300)
 }
+
+model publication {
+  id      Int    @id @default(autoincrement())
+  title   String @db.VarChar(500)
+  content String @db.VarChar(255)
+  author  String @db.VarChar(300)
+}
