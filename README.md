@@ -13,6 +13,14 @@
 - Qual a responsabilidade de cada Camada?
 - O que é um ORM?
 - Quais as vantagens de utilizar um ORM?
+- Como utilizar parametros de Url?
+- O que é Middleware? (Exemplo Logger)
+
+-----------------------------------
+
+- Validação de dados
+- Tratamento de Erros
+- Autentificação com JWT
 
 ### Comandos prisma
 
