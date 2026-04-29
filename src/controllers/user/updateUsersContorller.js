@@ -1,16 +1,22 @@
-import { updateUser } from '../../models/userModel.js';
+import { updateUser, validateUser } from "../../models/userModel.js";
 
-export async function updateUserController(req, res){
-	const {id} = req.params;
-	const {user} = req.body;
+export async function updateUsersController(req, res){
+    const {id} = req.params
+    const user = req.body
 
-	const result = await updateUser(user, +id);
+	const { success, data, error } = validateUser({ id: +id, ...user }, { name: true, email: true, pass: true });
 
-	if (!result)
-		return res.status(404).json({ message: `Erro ao atualizar usuário id: ${id}` })
+	if (!success) {
+		return res.status(400).json({ 
+			message: "Dados inválidos", 
+			fieldErrors: error.flatten 
+		});
+	}
 
-	return res.json({
-		message: "Usuário atualizado com sucesso",
-		user: result
-	})
+    const result = await updateUser(user, +id)
+
+    return res.json({
+        message: "Usuário atualizado com sucesso!",
+        user: result
+    })
 }

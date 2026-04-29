@@ -1,4 +1,5 @@
 import {prisma} from "../helpers/dbConnection.js";
+import * as z from 'zod';
 
 /*
 const user = {
@@ -8,6 +9,20 @@ const user = {
   pass: 'securepassword',
 }
 */
+
+const publicationSchema = z.object({
+    id: z.int().positive(),
+    title: z.string().min(3).max(255),
+    content: z.string().min(3),
+    authorId: z.number().positive()
+});
+
+export const validatePublication = (publication, partial = false) => {
+    if (partial) {
+        return publicationSchema.partial({partial}).safeParse(publication);
+    }
+    return publicationSchema.safeParse(publication);
+};
 
 export const createPublication = async (publication) => {
     return await prisma.publication.create({
