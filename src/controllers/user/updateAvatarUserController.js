@@ -1,19 +1,19 @@
 import { updateUser, validateUser } from "../../models/userModel.js";
 
-export async function updateAvatarUsersController(req, res){
+export async function updateAvatarUserController(req, res){
         const {id} = req.params
         const user = req.body
     
-		const { success, data, error } = validateUser({ id: +id, ...user }, { name: true, email: true, pass: true });
+        const {success, error, data} = validateUser({id: +id, avatar: user.avatar}, {name: true, pass: true, email: true})
 
-		if (!success) {
-			return res.status(400).json({ 
-				message: "Dados inválidos", 
-				fieldErrors: error.flatten 
-			});
-		}
+        if(!success){
+            return res.status(400).json({
+                message: "Erro de validação",
+                fieldErrors: error
+            })
+        }
 
-        const result = await updateUser(user, +id)
+        const result = await updateUser(data, data.id)
     
         return res.json({
             message: "Avatar atualizado com sucesso!",

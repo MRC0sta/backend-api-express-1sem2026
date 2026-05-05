@@ -1,16 +1,14 @@
-import { id } from "zod/locales";
-import { createUser, validateUser } from "../../models/userModel.js"
+import { createUser, validateUser  } from "../../models/userModel.js"
 
-export async function createUsersController(req, res) {
-
+export async function createUsersController(req, res){
     const user = req.body
 
-    const { success, data, error } = validateUser(user, { id: true });
+    const {success, error, data} = validateUser(user, {id: true})
 
-    if (!success) {
+    if(!success){
         return res.status(400).json({
             message: "Erro de validação",
-            fieldErrors: error.flatten().fieldErrors
+            fieldErrors: error
         })
     }
 
