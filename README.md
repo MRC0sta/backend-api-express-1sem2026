@@ -16,9 +16,13 @@
 - Como utilizar parametros de Url?
 - O que é Middleware? (Exemplo Logger)
 
------------------------------------
+---------------Prxoimos topicos--------------------
 
-- Validação de dados
+- Validação de dados com Zod
+- Para que serve a biblioteca do Zod?
+- Para que serve a função partial?
+- Qual a diferença do parse para o safeParse?
+
 - Tratamento de Erros
 - Autentificação com JWT
 
