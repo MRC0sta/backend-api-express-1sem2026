@@ -1,6 +1,7 @@
 import { createUser, validateUser  } from "../../models/userModel.js"
 
-export async function createUsersController(req, res){
+export async function createUsersController(error, req, res, next){
+    try {
     const user = req.body
 
     const {success, error, data} = validateUser(user, {id: true})
@@ -14,8 +15,25 @@ export async function createUsersController(req, res){
 
     const result = await createUser(data)
 
-    res.json({
+    return res.json({
         message: "Usuário criado com sucesso!",
         user: result
     })
+
+    } catch (error) {
+
+        if(error.code === 'P2002' && error.message.includes("email")){
+            return res.status(400).json({
+                message: "Email já cadastrado",
+                fieldErrors: {
+                    email: ["Email já cadastrado"]
+                }
+            })
+        }
+
+        next(error)
+    
+    }
+
+    
 }

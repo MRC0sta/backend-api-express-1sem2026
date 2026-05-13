@@ -46,7 +46,9 @@ export const deletePublication = async (id) => {
 
 export const updatePublication = async (publication, id) => {
     return await prisma.publication.update({
-        where: { id },
-        data: publication
-    });
+        data: publication,
+        where: {
+            id
+        }
+    })
 }

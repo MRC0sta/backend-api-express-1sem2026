@@ -16,25 +16,35 @@
 - Como utilizar parametros de Url?
 - O que é Middleware? (Exemplo Logger)
 
----------------Prxoimos topicos--------------------
+--------- Próximos Tópicos
 
-- Validação de dados com Zod
-- Para que serve a biblioteca do Zod?
-- Para que serve a função partial?
-- Qual a diferença do parse para o safeParse?
+-Validação de Dados com Zod
+    -Para que serve a biblioteca do Zod?
+    -Para que serve a função Partial?
+    -Qual a diferença do parse para o safeParse?
+-Tratamento de Erros
+    -Qual o papel do ErrorHandler?
+    -Quais errors devem ser tratados pelo ErrorHandler e quais devem ser tratados no try catch do controller?
+    -Quais os parametros de entrada de um middleware de ErrorHandler?
+-Query Params (/user/?name=matheus)
+    - Como capturar um parametro query da url no Controller?
+    - Para que sao utilizados em geral os query params?
 
-- Tratamento de Erros
-- Autentificação com JWT
+-Autenticação com JWT
 
-### Comandos prisma
+Comandos Prisma
+-Instalação
+npm i prisma -D
+npm i dotenv para Mysql e Mariadb npm install @prisma/client @prisma/adapter-mariadb mariadb
 
-Instalacoes
-- npm i prisma -D
-- npm i dotenv -D
+-Inicia o Prisma
+npx prisma init --datasource-provider mysql --output ../generated/prisma
 
-Mysql e Mariadb
+-Gera o banco de dados a partir do schema do prisma
+npx prisma db push
 
-Init
-npx prisma init --datasource-provider mysql --output ../generated/prisma/prisma
+-Gera o schema do prisma a partir do banco de dados
+npx prisma db push
 
-npm install @prisma/client @prisma/adapter-mariadb mariadb
+-Gerar as funções para interagir com os modelos mapeados no schema
+npx prisma generate
